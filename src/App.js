@@ -1,4 +1,5 @@
 import './App.css';
+import PropTypes from 'prop-types';
 
 const item = {
   brand: 'Tiger of Sweden',
@@ -9,7 +10,8 @@ const item = {
   currency: '£'
 };
 
-function ShopItemFunc({item}){
+function ShopItemFunc(prop){
+const {item} = prop;
 
 return <div className="main-content">
 <h2>{item.brand}</h2>
@@ -25,6 +27,17 @@ return <div className="main-content">
   <button>Добавить в корзину</button>
 </div>
 </div>
+};
+
+ShopItemFunc.propTypes = {
+  item: PropTypes.shape({
+    brand: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    descriptionFull: PropTypes.string,
+    price: PropTypes.number,
+    currency: PropTypes.string,
+  })
 }
 
 function App() {
